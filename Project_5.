@@ -1104,111 +1104,9 @@
     "\n",
     "In pandas, the `resample()` method is similar to the `groupby()` method - with `resample()` you group by a specific time span. We'll use `resample()` to group the time series data by a sampling period and apply several methods to each sampling period. In our case, we'll resample annually and weekly.\n",
     "\n",
-    "### Part 5\n",
-    "- Subset `df_run` for data from 2015 through 2018. Assign the result to `runs_subset_2015_2018`\n",
-    "- Count the annual averages using `resample()` with `'A'` alias, and the `mean()` method for `runs_subset_2015_2018`\n",
-    "- Count the average weekly statistics using `resample()` with `'W'` alias, and the `mean()` method twice\n",
-    "- Filter from dataset column `'Distance (km)'` and count the average number of trainings per week using `resample()` with the `count()` and `mean()` methods. Assign the result to `weekly_counts_average`"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# Prepare running data from 2015-2018\n",
+   
     "\n",
-    "\n",
-    "# Calculate annual statistics\n",
-    "\n",
-    "\n",
-    "\n",
-    "# Calculate weekly statistics\n",
-    "\n",
-    "\n",
-    "\n",
-    "# Mean weekly counts\n",
-    "\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "Let's plot the long term averages of my distance run and my heart rate with their raw data to visually compare the averages to each training session. Again, we'll use the data from 2015 through 2018.\n",
-    "\n",
-    "In this task, we will use matplotlib functionality for plot creation and customization.\n",
-    "\n",
-    "### Part 6.\n",
-    "- Select information for distance and then for heart rate from `runs_subset_2015_2018` and assign to `runs_distance` and `runs_hr`, respectively\n",
-    "- Create two subplots with shared x-axis using the `plt.subplots()` method, setting the first positional parameter to 2, `sharex` to `True`, and `figsize` to `(12,8)`. Assign the output to `fig, (ax1, ax2)` variables\n",
-    "- Plot distance on the first subplot, setting parameter `ax` to `ax1`. Use the `set` method to change the `ylabel` to `'Distance (km)'` and `title` to `'Historical data with averages'`. Add a horizontal line with `axhline()` for the average value of heart rate counted as `runs_hr.mean()`. Set `color` to `'blue'`, `linewidth` to `1`, and `linestyle` to `'-.'`\n",
-    "- On the second subplot (`ax2`), use the `set` method to change the `xlabel` to `'Date'` and `ylabel` to `'Average Heart Rate (bpm)'`. Add a horizontal line with `axhline()` for the average value of heart rate counted as `runs_hr.mean()`. Set `color` to `'blue'`, `linewidth` to `1`, and `linestyle` to `'-.'`"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# Prepare data\n",
-    "\n",
-    "\n",
-    "# Create plot\n",
-    "\n",
-    "\n",
-    "# Plot and customize first subplot\n",
-    "\n",
-    "\n",
-    "# Plot and customize second subplot\n",
-    "\n",
-    "\n",
-    "# Show plot\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "To motivate myself to run regularly, I set a target goal of running 1000 km per year. Let's visualize my annual running distance (km) from 2013 through 2018 to see if I reached my goal each year. Only stars in the green region indicate success.\n",
-    "\n",
-    "### Part 7.\n",
-    "- Subset `df_run` for data from 2013 through 2018 and select the `Distance (km)` column. Count annual totals with `resample()` and `sum()`. Assign the result to `df_run_dist_annual`\n",
-    "- Create a plot with `plt.figure()`, setting `figsize` to define a plot of size 8.0 inches x 5.0 inches\n",
-    "- Plot `df_run_dist_annual` and call the plot `ax`. Inside the call to plot, set `marker='*'`, `markersize=14`, `linewidth=0`, `color='blue'` to create large blue stars for each annual total mileage\n",
-    "- Customize the plot with horizontal span from 0 to 800 km with `ax.axhspan()`. Set `color` to `'red'` and `alpha` to `0.2`. Repeat this for the span from 800 to 1000 km and set `color` to `'yellow'` and `alpha` to `0.3`. Repeat this again for the span from 1000 to 1210 and set `color` to `'green'` and `alpha` to `0.4`\n",
-    "- Show the plot with `plt.show()`"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# Prepare data\n",
-    "\n",
-    "\n",
-    "# Create plot\n",
-    "\n",
-    "\n",
-    "# Plot and customize\n",
-    "\n",
-    "\n",
-    "# Show plot\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "Heart rate is a popular metric used to measure training intensity. Depending on age and fitness level, heart rates are grouped into different zones that people can target depending on training goals. A target heart rate during moderate-intensity activities is about 50-70% of maximum heart rate, while during vigorous physical activity it’s about 70-85% of maximum.\n",
-    "\n",
-    "We'll create a distribution plot of my heart rate data by training intensity. It will be a visual presentation for the number of activities from predefined training zones.\n",
-    "\n",
-    "### Part 8.\n",
+    "### Part 5.\n",
     "- Subset `df_run` from March 2015 through 2018 then select the `'Average Heart Rate (bpm)'` column. Assign the result to `df_run_hr_all`\n",
     "- Create a plot with `plt.subplots()`, setting `figsize` to `(8,5)`. Assign the result to `fig, ax`\n",
     "- Create customized x-axis ticks with `ax.xaxis.set()` and passing the `hr_zones` to the `ticks` parameter. Use  `ax.set_xticklabels()` and set the parameters `labels` to `zone_names`, `rotation` to `-30`, and `ha` to `'left'`. Use `ax.set()` to set the `title` as `'Distribution of HR'` and the `ylabel` as `'Number of runs'`\n",
@@ -1249,7 +1147,7 @@
     "\n",
     "To do this, we'll create two tables. The first table will be a summary of the distance (km) and climb (m) variables for each training activity. The second table will list the summary statistics for the average speed (km/hr), climb (m), and distance (km) variables for each training activity.\n",
     "\n",
-    "### Part 9.\n",
+    "### Part 6.\n",
     "- Concatenate the `df_run` DataFrame with `df_walk` and `df_cycle` using `append()`, then `sort` based on the index in descending order. Assign the result to `df_run_walk_cycle`\n",
     "- Group `df_run_walk_cycle` by activity type, then select the columns in `dist_climb_cols`. Sum the result using `sum()`. Assign the result to `df_totals` and print the result.\n",
     "- Use the `stack()` method on `df_summary` to show a compact reshaped form of the full summary report."
